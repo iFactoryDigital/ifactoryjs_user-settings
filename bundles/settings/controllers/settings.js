@@ -10,7 +10,7 @@ const Setting = model('setting');
 /**
  * Create settings controller
  */
-class SettingController extends Controller {
+class SettingsController extends Controller {
   /**
    * construct user controller
    */
@@ -91,6 +91,6 @@ class SettingController extends Controller {
 /**
  * eport settings controller
  *
- * @type {settingController}
+ * @type {SettingsController}
  */
-module.exports = SettingController;
+module.exports = SettingsController;

@@ -14,7 +14,7 @@ const Setting = model('setting');
 /**
  * build settings helper
  */
-class SettingHelper extends Helper {
+class SettingsHelper extends Helper {
   /**
    * construct settings helper
    */
@@ -47,8 +47,8 @@ class SettingHelper extends Helper {
 }
 
 /**
- * export new SettingHelper class
+ * export new SettingsHelper class
  *
- * @return {SettingHelper}
+ * @return {SettingsHelper}
  */
-module.exports = new SettingHelper();
+module.exports = new SettingsHelper();
