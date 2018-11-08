@@ -18,7 +18,7 @@ riot.mixin('settings', {
     if (typeof window === 'undefined') return;
 
     // set this store
-    this.settings = require('setting/public/js/store');
+    this.settings = require('settings/public/js/store');
 
     // on form change
     this.settings.on('update', this.update);
