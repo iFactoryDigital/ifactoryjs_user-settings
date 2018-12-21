@@ -11,10 +11,9 @@ class Setting extends Model {
    * @param attrs
    * @param options
    */
-  constructor () {
+  constructor() {
     // run super
     super(...arguments);
-
   }
 
   /**
@@ -22,12 +21,12 @@ class Setting extends Model {
    *
    * @return array
    */
-  async sanitise () {
+  async sanitise() {
     // return
     return {
-      'id'    : this.get('_id').toString(),
-      'name'  : this.get('name'),
-      'value' : this.get('value')
+      id    : this.get('_id').toString(),
+      name  : this.get('name'),
+      value : this.get('value'),
     };
   }
 }
