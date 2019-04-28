@@ -4,7 +4,7 @@ riot.mixin('settings', {
   /**
    * on init function
    */
-  'init' : function () {
+  init() {
     // set value
     this.settings = {};
 
@@ -22,5 +22,5 @@ riot.mixin('settings', {
 
     // on form change
     this.settings.on('update', this.update);
-  }
+  },
 });

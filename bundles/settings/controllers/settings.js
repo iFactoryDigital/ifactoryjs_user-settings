@@ -14,12 +14,12 @@ class SettingsController extends Controller {
   /**
    * construct user controller
    */
-  constructor () {
+  constructor() {
     // Run super
     super();
 
     // bind methods
-    this.build         = this.build.bind(this);
+    this.build = this.build.bind(this);
     this.settingAction = this.settingAction.bind(this);
 
     // Run
@@ -31,24 +31,24 @@ class SettingsController extends Controller {
    *
    * @param {router} router
    */
-  build () {
+  build() {
     // on render
     this.eden.pre('view.render', async (data) => {
       // set render values
-      let user    = data.req.user;
-      let session = data.req.sessionID;
+      const user    = data.req.user;
+      const session = data.req.sessionID;
 
       // set settings
       data.render.settings = (await Setting.or({
-        'session' : session
+        session,
       }, {
-        'user.id' : user ? user.get('_id').toString() : 'false'
+        'user.id' : user ? user.get('_id').toString() : 'false',
       }).find()).map((setting) => {
         // return Object
         return {
-          'name'  : setting.get('name'),
-          'value' : setting.get('value')
-        }
+          name  : setting.get('name'),
+          value : setting.get('value'),
+        };
       });
     });
   }
@@ -61,23 +61,23 @@ class SettingsController extends Controller {
    *
    * @call setting.set
    */
-  async settingAction (name, value, opts) {
+  async settingAction(name, value, opts) {
     // emit setting
     socket[opts.user ? 'user' : 'session'](opts.user || opts.sessionID, 'setting', data);
 
     // check setting exists
     const setting = await Setting.or({
-      'session' : opts.sessionID
+      session : opts.sessionID,
     }, {
-      'user.id' : opts.user ? opts.user.get('_id').toString() : 'false'
+      'user.id' : opts.user ? opts.user.get('_id').toString() : 'false',
     }).where({
-      'name' : data.name
+      name : data.name,
     }).findOne() || new setting({
-      'name' : data.name
+      name : data.name,
     });
 
     // check session/user
-    setting.set('user',    opts.user);
+    setting.set('user', opts.user);
     setting.set('session', opts.sessionID);
 
     // set setting

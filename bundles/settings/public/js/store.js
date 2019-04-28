@@ -1,8 +1,8 @@
 
 // require dependencies
-const store  = require ('default/public/js/store');
-const Events = require ('events');
-const socket = require ('socket/public/js/bootstrap');
+const store  = require('default/public/js/store');
+const Events = require('events');
+const socket = require('socket/public/js/bootstrap');
 
 /**
  * create form store
@@ -11,7 +11,7 @@ class SettingStore extends Events {
   /**
    * construct riot store
    */
-  constructor () {
+  constructor() {
     // set observable
     super(...arguments);
 
@@ -39,7 +39,7 @@ class SettingStore extends Events {
    *
    * @return {*}
    */
-  get (name) {
+  get(name) {
     // return value
     return this[name];
   }
@@ -50,9 +50,9 @@ class SettingStore extends Events {
    * @param  {String} name
    * @param  {*} value
    */
-  set (name, value) {
+  set(name, value) {
     // get value
-    let old = this[name];
+    const old = this[name];
 
     // set setting
     this[name] = value;
@@ -64,8 +64,8 @@ class SettingStore extends Events {
 
       // emit setting
       socket.emit('setting', {
-        'name'  : name,
-        'value' : value
+        name,
+        value,
       });
     }
   }
@@ -77,9 +77,9 @@ class SettingStore extends Events {
    *
    * @private
    */
-  _setting (setting) {
+  _setting(setting) {
     // get value
-    let old = this[setting.name];
+    const old = this[setting.name];
 
     // set setting
     this[setting.name] = setting.value;

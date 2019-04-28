@@ -3,7 +3,7 @@
  */
 
 // use strict
-'use strict';
+
 
 // require dependencies
 const Helper = require('helper');
@@ -18,7 +18,7 @@ class SettingsHelper extends Helper {
   /**
    * construct settings helper
    */
-  constructor () {
+  constructor() {
     // run super
     super();
 
@@ -34,11 +34,11 @@ class SettingsHelper extends Helper {
    *
    * @return {Promise}
    */
-  async get (user, name) {
+  async get(user, name) {
     // get setting by name
-    let setting = await Setting.findOne({
-      'name'    : name,
-      'user.id' : user ? user.get ('_id').toString () : null
+    const setting = await Setting.findOne({
+      name,
+      'user.id' : user ? user.get('_id').toString() : null,
     });
 
     // return null or setting
